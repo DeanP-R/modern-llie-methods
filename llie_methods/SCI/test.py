@@ -34,7 +34,8 @@ def save_images(tensor, path):
     image_numpy = tensor[0].cpu().float().numpy()
     image_numpy = (np.transpose(image_numpy, (1, 2, 0)))
     im = Image.fromarray(np.clip(image_numpy * 255.0, 0, 255.0).astype('uint8'))
-    im.save(path, 'png')
+    path = path.replace(".png", ".jpg")
+    im.save(path, 'JPEG')
 
 
 def main():
@@ -51,7 +52,7 @@ def main():
             input = Variable(input, volatile=True).cuda()
             image_name = image_name[0].split('\\')[-1].split('.')[0]
             i, r = model(input)
-            u_name = '%s.png' % (image_name)
+            u_name = '%s.jpg' % (image_name)
             print('processing {}'.format(u_name))
             u_path = save_path + '/' + u_name
             save_images(r, u_path)

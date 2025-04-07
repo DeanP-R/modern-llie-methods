@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from loss import LossFunction
+from llie_methods.SCI.loss import LossFunction
 
 
 
