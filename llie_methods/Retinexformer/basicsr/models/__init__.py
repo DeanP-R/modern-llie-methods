@@ -1,5 +1,6 @@
 import importlib
 from os import path as osp
+from basicsr.models.image_restoration_model import ImageRestorationModel
 
 from basicsr.utils import get_root_logger, scandir
 
@@ -22,16 +23,23 @@ def create_model(opt):
     """Create model.
 
     Args:
-        opt (dict): Configuration. It constains:
+        opt (dict): Configuration. It contains:
             model_type (str): Model type.
     """
     model_type = opt['model_type']
 
+    # Special case: handle RetinexformerModel explicitly
+    if model_type == 'RetinexformerModel':
+        from .retinexformer_model import RetinexformerModel
+        return RetinexformerModel(opt)
+
     # dynamic instantiation
+    model_cls = None
     for module in _model_modules:
         model_cls = getattr(module, model_type, None)
         if model_cls is not None:
             break
+
     if model_cls is None:
         raise ValueError(f'Model {model_type} is not found.')
 
@@ -40,3 +48,4 @@ def create_model(opt):
     logger = get_root_logger()
     logger.info(f'Model [{model.__class__.__name__}] is created.')
     return model
+

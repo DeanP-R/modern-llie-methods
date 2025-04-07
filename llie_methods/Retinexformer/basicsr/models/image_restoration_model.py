@@ -384,3 +384,5 @@ class ImageCleanModel(BaseModel):
                 save_dict[param_key_] = state_dict
 
             torch.save(save_dict, save_path)
+
+ImageRestorationModel = ImageCleanModel

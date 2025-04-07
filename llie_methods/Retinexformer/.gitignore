@@ -123,3 +123,10 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+basicsr/version.py
+basicsr/models/__init__.py
+basicsr/models/image_restoration_model.py
+.gitignore
+basicsr/version.py
+basicsr/models/__init__.py
+basicsr/models/image_restoration_model.py
