@@ -9,7 +9,7 @@ datasets:
     name: "DarkFaceTest"
     type: PairedImageDataset
     dataroot_gt: ~
-    dataroot_lq: ../../../darkface/images     # changed to point to images
+    dataroot_lq: ./Enhancement/DarkFaceTest/input
     io_backend:
       type: disk
 
@@ -28,6 +28,6 @@ val:
   suffix: ~
 
 path:
-  pretrain_network_g: ../../../pretrained_weights/LOL_v1.pth  #  changed also
+  pretrain_network_g: pretrained_weights/LOL_v1.pth
   strict_load_g: true
   resume_state: ~
