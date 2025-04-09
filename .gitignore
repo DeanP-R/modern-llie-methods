@@ -2,3 +2,6 @@ analytics.js.download
 .dce_venv
 output/
 dce_venv/
+llie_methods/Retinexformer/Options/RetinexFormer_LOL_v1.yml
+darkface/images_jpg/*
+darkface/dummy_gt/*
